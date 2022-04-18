@@ -1,0 +1,25 @@
+R3#
+R3#enable
+R3#config terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#interface FastEthernet1/0
+R3(config-if)#ip address 180.43.171.2 255.255.255.0
+R3(config-if)#no shutdown
+R3(config-if)#exit
+R3(config)#interface Ethernet0/0
+R3(config-if)#ip address 180.43.170.254 255.255.255.128
+R3(config-if)#no shutdown
+R3(config-if)#exit
+R3(config)#ip route 192.168.5.0 255.255.255.192 180.43.171.1
+R3(config)#ip route 180.43.170.0 255.255.255.128 180.42.171.254
+R3(config)#exit
+R3#co
+*Mar  1 00:29:07.821: %SYS-5-CONFIG_I: Configured from console by console
+R3#copy running-config startup-config
+Destination filename [startup-config]?
+Warning: Attempting to overwrite an NVRAM configuration previously written
+by a different version of the system image.
+Overwrite the previous NVRAM configuration?[confirm]
+Building configuration...
+[OK]
+R3#

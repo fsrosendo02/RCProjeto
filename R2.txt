@@ -1,0 +1,21 @@
+R2#enable
+R2#config terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#interface FastEthernet1/0
+R2(config-if)#ip address 180.43.171.1 255.255.255.0
+R2(config-if)#no shutdown
+R2(config-if)#exit
+R2(config)#interface Ethernet0/0
+R2(config-if)#ip address 192.168.5.62 255.255.255.192
+R2(config-if)#no shutdown
+R2(config-if)#exit
+R2(config)#ip route 180.43.170.128 255.255.255.128 180.43.171.2
+R2(config)#ip route 180.43.170.0 255.255.255.128 180.43.171.254
+R2(config)#exit
+R2#
+*Mar  1 00:17:51.652: %SYS-5-CONFIG_I: Configured from console by console
+R2#copy running-config startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+R2#
